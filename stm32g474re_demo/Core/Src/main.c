@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dma.h"
+#include "spi.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -56,6 +57,16 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* USER CODE BEGIN PV */
+// for test =================
+#define BUFFERSIZE                       (COUNTOF(aTxBuffer) - 1)
+/* Buffer used for transmission */
+uint8_t aTxBuffer[] = "****SPI - Two Boards communication based on DMA **** SPI Message ******** SPI Message ******** SPI Message ****";
+
+/* Buffer used for reception */
+uint8_t aRxBuffer[BUFFERSIZE];
+
+//=============================
 
 /* USER CODE END 0 */
 
@@ -89,8 +100,27 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   Comm_DMAUconf_Hal();
+
+  //====================================
+    if (HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE) != HAL_OK)
+    {
+      /* Transfer error in transmission process */
+      Error_Handler();
+    }
+
+    /*##-2- Wait for the end of the transfer ###################################*/
+    /*  Before starting a new communication transfer, you must wait the callback call
+        to get the transfer complete confirmation or an error detection.
+        For simplicity reasons, this example is just waiting till the end of the
+        transfer, but application may perform other tasks while transfer operation
+        is ongoing. */
+    while (wTransferState == TRANSFER_WAIT)
+    {
+    }
+  //=====================================
   /* USER CODE END 2 */
 
   /* Infinite loop */

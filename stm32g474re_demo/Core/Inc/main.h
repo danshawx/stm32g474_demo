@@ -75,6 +75,21 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define CE_Pin LL_GPIO_PIN_6
+#define CE_GPIO_Port GPIOC
+#define DWM_IRQ_Pin LL_GPIO_PIN_7
+#define DWM_IRQ_GPIO_Port GPIOC
+#define DWM_IRQA12_Pin LL_GPIO_PIN_12
+#define DWM_IRQA12_GPIO_Port GPIOA
+#define DWM_IRQA12_EXTI_IRQn EXTI15_10_IRQn
+#define DWM_NSS_Pin LL_GPIO_PIN_15
+#define DWM_NSS_GPIO_Port GPIOA
+#define DWM_SCK_Pin LL_GPIO_PIN_3
+#define DWM_SCK_GPIO_Port GPIOB
+#define DWM_MISO_Pin LL_GPIO_PIN_4
+#define DWM_MISO_GPIO_Port GPIOB
+#define DWM_MOSI_Pin LL_GPIO_PIN_5
+#define DWM_MOSI_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

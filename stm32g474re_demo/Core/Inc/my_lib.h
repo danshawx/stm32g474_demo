@@ -12,6 +12,8 @@ typedef float           float32;
 typedef double          float64;  
 */
 
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+
 #define SUCCESS      (int32_t)(1)
 #define FAILED       (int32_t)(0)
 #define PARAM_ILLEGA (int32_t)(-1)

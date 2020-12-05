@@ -55,8 +55,8 @@ all: main-build
 main-build: stm32g474re_demo.elf secondary-outputs
 
 # Tool invocations
-stm32g474re_demo.elf: $(OBJS) $(USER_OBJS) /Users/xiaodan/STM32CubeIDE/workspace_1.5.0/stm32g474re_demo/STM32G474RETX_FLASH.ld
-	arm-none-eabi-gcc -o "stm32g474re_demo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/xiaodan/STM32CubeIDE/workspace_1.5.0/stm32g474re_demo/STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32g474re_demo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32g474re_demo.elf: $(OBJS) $(USER_OBJS) /Users/xiaodan/Documents/github/stm32g474/stm32g474_demo/stm32g474re_demo/STM32G474RETX_FLASH.ld
+	arm-none-eabi-gcc -o "stm32g474re_demo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/xiaodan/Documents/github/stm32g474/stm32g474_demo/stm32g474re_demo/STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32g474re_demo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
