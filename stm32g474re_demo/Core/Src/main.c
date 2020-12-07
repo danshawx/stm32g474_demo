@@ -104,7 +104,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   Comm_DMAUconf_Hal();
 
-  //====================================
+#if 0
+  //== SPI test ==================================
     if (HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE) != HAL_OK)
     {
       /* Transfer error in transmission process */
@@ -121,6 +122,7 @@ int main(void)
     {
     }
   //=====================================
+#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
