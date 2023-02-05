@@ -5,7 +5,7 @@
 
 
 
-void Comm_Task(void);
+void comm_task(void);
 
 
 

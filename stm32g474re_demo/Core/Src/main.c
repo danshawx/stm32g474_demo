@@ -93,7 +93,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  Comm_BufInit_Hal();
+  hal_comm_bufinit();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -102,7 +102,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  Comm_DMAUconf_Hal();
+  hal_comm_dmauconf();
 
 #if 0
   //== SPI test ==================================
@@ -132,7 +132,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  My_Sched_Loop();
+	  my_sched_loop();
   }
   /* USER CODE END 3 */
 }

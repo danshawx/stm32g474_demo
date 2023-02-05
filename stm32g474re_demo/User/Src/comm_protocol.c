@@ -1,29 +1,29 @@
 #include "main.h"
 
 
-uint32_t Comm_Unpack_Fun(void)
+uint32_t comm_unpack_fun(void)
 {
 	//uint16_t unpack_cnt = 0;
 	uint8_t u8_rxdata = 0;
 	//static uint8_t unpack_phase = 0;
 
-	while (!is_DeCirqueempty(p_usartrxque)) // || (unpack_cnt ++ < CONFIG_USART_RXQUE_MAXLEN))
+	while (!is_decirqueempty(p_usartrxque)) // || (unpack_cnt ++ < config_usart_rxque_maxlen))
 	{
-		if (1 == DeCirque_pop(p_usartrxque,&u8_rxdata, 1))
+		if (1 == decirque_pop(p_usartrxque,&u8_rxdata, 1))
 		{
 			/*switch (unpack_phase)
 			{
-				case COMM_USART_HEAD_START:
+				case comm_usart_head_start:
 				{
-					if (COMM_USART_PROCOL_HEAD_START == u8_rxdata)
+					if (comm_usart_procol_head_start == u8_rxdata)
 					{
-						unpack_phase = COMM_USART_HEAD_DATA;
+						unpack_phase = comm_usart_head_data;
 					}
 					break;
 				}
-				case COMM_USART_HEAD_DATA:
+				case comm_usart_head_data:
 				{
-					//DeCirque_pop(p_usartrxque, g_aUsartRxBuf, )
+					//decirque_pop(p_usartrxque, g_ausartrxbuf, )
 					break;
 				}
 

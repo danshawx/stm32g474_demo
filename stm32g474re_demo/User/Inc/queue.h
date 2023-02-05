@@ -27,7 +27,7 @@ typedef struct
     int front;
     int size;
     uint8_t *p_queuebuf;
-}T_DeCirqueDate;
+}decirquedate_t;
 
 
 typedef struct 
@@ -36,18 +36,18 @@ typedef struct
     int rear;
     int front;
     uint8_t *p_queuebuf;
-}T_DequeDate;
+}dequedate_t;
 
 
-typedef struct MY_NODE
+typedef struct my_node
 {
     int32_t value;
-    struct MY_NODE *p_next;
-}T_node;
+    struct my_node *p_next;
+}node_t;
 
-int32_t is_DeCirqueempty(T_DeCirqueDate *p_quehead);
-int32_t DeCirque_pop(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len);
-int32_t DeCirque_push(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len);
-T_DeCirqueDate *DeCirque_init(int32_t buf_len);
+int32_t is_decirqueempty(decirquedate_t *p_quehead);
+int32_t decirque_pop(decirquedate_t *p_quehead, uint8_t *p_buf, uint8_t buf_len);
+int32_t decirque_push(decirquedate_t *p_quehead, uint8_t *p_buf, uint8_t buf_len);
+decirquedate_t *decirque_init(int32_t buf_len);
 
 #endif

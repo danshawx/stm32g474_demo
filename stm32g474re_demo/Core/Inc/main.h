@@ -42,12 +42,13 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "my_lib.h"
-#include "hal_usart.h"
+#include "queue.h"
+#include "drv_usart.h"
 #include "comm_protocol.h"
-#include "comm_task.h"
+#include "comm.h"
+#include "led.h"
 
-#include "my_task.h"
+#include "task.h"
 
 #include "checksum.h"
 /* USER CODE END Includes */

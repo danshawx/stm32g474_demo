@@ -1,10 +1,10 @@
 
 #include "stdlib.h"
 #include "stdio.h"
-#include "my_lib.h"
+#include "queue.h"
 
 //*********************** circular queue ****************//
-int32_t is_DeCirqueempty(T_DeCirqueDate *p_quehead)
+int32_t is_decirqueempty(decirquedate_t *p_quehead)
 {
     if (NULL == p_quehead)
         return 0;
@@ -17,7 +17,7 @@ int32_t is_DeCirqueempty(T_DeCirqueDate *p_quehead)
     return 0;
 }
 
-int32_t DeCirque_pop(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len)
+int32_t decirque_pop(decirquedate_t *p_quehead, uint8_t *p_buf, uint8_t buf_len)
 {
 	uint8_t i = 0;
 
@@ -35,7 +35,7 @@ int32_t DeCirque_pop(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len)
     return 1;
 }
 
-int32_t DeCirque_push(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len)
+int32_t decirque_push(decirquedate_t *p_quehead, uint8_t *p_buf, uint8_t buf_len)
 {
 	uint8_t i = 0;
 
@@ -61,11 +61,11 @@ int32_t DeCirque_push(T_DeCirqueDate *p_quehead, uint8_t *p_buf, uint8_t buf_len
     return 1;
 };
 
-T_DeCirqueDate *DeCirque_init(int32_t buf_len)
+decirquedate_t *decirque_init(int32_t buf_len)
 {
     if (buf_len > 0)
     {
-        T_DeCirqueDate *p_queue = (T_DeCirqueDate *)malloc(sizeof(T_DeCirqueDate));
+        decirquedate_t *p_queue = (decirquedate_t *)malloc(sizeof(decirquedate_t));
         uint8_t *p_buf = (uint8_t *)malloc(buf_len * sizeof(uint8_t));
 
         if ((NULL == p_queue) || (NULL == p_buf))
@@ -87,7 +87,7 @@ T_DeCirqueDate *DeCirque_init(int32_t buf_len)
 
 
 //*********************** non-circular queue ****************//
-int32_t is_Dequeempty(T_DequeDate *p_quehead)
+int32_t is_dequeempty(dequedate_t *p_quehead)
 {
     if (NULL == p_quehead)
         return 0;
@@ -100,12 +100,12 @@ int32_t is_Dequeempty(T_DequeDate *p_quehead)
     return 0;
 }
 
-int32_t Deque_pop(T_DequeDate *p_quehead, uint8_t *p_val)
+int32_t deque_pop(dequedate_t *p_quehead, uint8_t *p_val)
 {
     if (NULL == p_quehead)
         return -1;
 
-    if (!is_Dequeempty(p_quehead))
+    if (!is_dequeempty(p_quehead))
     {
         *p_val = p_quehead->p_queuebuf[p_quehead->front];
         p_quehead->front = (p_quehead->front + 1) % (p_quehead->cap);
@@ -114,7 +114,7 @@ int32_t Deque_pop(T_DequeDate *p_quehead, uint8_t *p_val)
     return -2;
 }
 
-int32_t Deque_push(T_DequeDate *p_quehead, int8_t value)
+int32_t deque_push(dequedate_t *p_quehead, int8_t value)
 {
     if (NULL == p_quehead)
         return -1;
@@ -128,11 +128,11 @@ int32_t Deque_push(T_DequeDate *p_quehead, int8_t value)
     return 1;
 };
 
-T_DequeDate *Deque_init(int32_t buf_len)
+dequedate_t *deque_init(int32_t buf_len)
 {
     if (buf_len > 0)
     {
-        T_DequeDate *p_queue = (T_DequeDate *)malloc(sizeof(T_DequeDate));
+        dequedate_t *p_queue = (dequedate_t *)malloc(sizeof(dequedate_t));
         uint8_t *p_buf = (uint8_t *)malloc(buf_len * sizeof(uint8_t));
 
         if ((NULL == p_queue) || (NULL == p_buf))
@@ -152,13 +152,13 @@ T_DequeDate *Deque_init(int32_t buf_len)
 }
 
 //*********************** linked_list ****************//
-T_node linked_head = {0};
+node_t linked_head = {0};
 
-T_node *linked_list_inverse(T_node *p_head)
+node_t *linked_list_inverse(node_t *p_head)
 {
-    T_node *p_pre = NULL;
-    T_node *p_cur = NULL;
-    T_node *p_next = NULL;
+    node_t *p_pre = NULL;
+    node_t *p_cur = NULL;
+    node_t *p_next = NULL;
 
     if (NULL == p_head)
         return NULL;
@@ -175,9 +175,9 @@ T_node *linked_list_inverse(T_node *p_head)
     return p_pre;
 }
 
-T_node *linked_list_tail(T_node *p_head)
+node_t *linked_list_tail(node_t *p_head)
 {
-    T_node *p_temp = NULL;
+    node_t *p_temp = NULL;
 
     if (NULL == p_head)
         return NULL;
@@ -191,10 +191,10 @@ T_node *linked_list_tail(T_node *p_head)
     return p_temp;
 }
 
-int32_t linked_list_del(T_node *p_head, T_node *p_item)
+int32_t linked_list_del(node_t *p_head, node_t *p_item)
 {
-    T_node *p_temp = NULL;
-    T_node *p_pre  = NULL;
+    node_t *p_temp = NULL;
+    node_t *p_pre  = NULL;
 
     if ((NULL == p_item) || (NULL == p_head) || (p_head == p_item))
         return -1;
@@ -216,9 +216,9 @@ int32_t linked_list_del(T_node *p_head, T_node *p_item)
     return -2;
 }
 
-int32_t linked_list_insert(T_node *p_pre, T_node *p_item)
+int32_t linked_list_insert(node_t *p_pre, node_t *p_item)
 {
-    T_node *p_temp = NULL;
+    node_t *p_temp = NULL;
 
     if ((NULL == p_pre) || (NULL == p_item))
         return -1;
@@ -230,9 +230,9 @@ int32_t linked_list_insert(T_node *p_pre, T_node *p_item)
     return 1;
 }
 
-T_node *linked_list_creat(void)
+node_t *linked_list_creat(void)
 {
-    T_node *p_list = (T_node *)malloc(sizeof(T_node));
+    node_t *p_list = (node_t *)malloc(sizeof(node_t));
 
     if (NULL == p_list)
         return NULL;
@@ -297,12 +297,12 @@ int main()
     DeCirque_push(p_quehead, 14);
     DeCirque_push(p_quehead, 15);
 
-    code = DeCirque_pop(p_quehead, &read_data);
-    code = DeCirque_pop(p_quehead, &read_data);
-    code = DeCirque_pop(p_quehead, &read_data);
-    code = DeCirque_pop(p_quehead, &read_data);
-    code = DeCirque_pop(p_quehead, &read_data);
-    code = DeCirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
+    code = decirque_pop(p_quehead, &read_data);
 
     printf("cirqueue test end");
 
