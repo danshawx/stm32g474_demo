@@ -30,6 +30,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g4xx_hal.h"
 #include "stm32g4xx_ll_dma.h"
+#include "stm32g4xx_ll_iwdg.h"
 #include "stm32g4xx_ll_usart.h"
 #include "stm32g4xx_ll_rcc.h"
 #include "stm32g4xx_ll_system.h"
@@ -42,11 +43,16 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stm32g4xx_ll_iwdg.h"
+
 #include "queue.h"
 #include "drv_usart.h"
+#include "drv_watchdog.h"
+
 #include "comm_protocol.h"
 #include "comm.h"
 #include "led.h"
+
 
 #include "task.h"
 

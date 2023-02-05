@@ -29,6 +29,7 @@ void my_sched_loop(void)
             g_umy_task[i].remaintoexec = g_umy_task[i].periodictimems + HAL_GetTick();
         }
         //Iwdg_Clear();
+        hal_watchdog_feed();
     }
     //exp deal
 }
